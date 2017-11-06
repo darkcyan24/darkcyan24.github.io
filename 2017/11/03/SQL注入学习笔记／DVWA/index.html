@@ -1,12 +1,7 @@
 <!DOCTYPE html>
 <html lang="">
 <head>
-    <title>
-    ghoul
-    
-        | 间违ったのは俺じゃない、この世界だ
-    
-</title>
+    <title> SQL注入学习笔记／DVWA · ghoul </title>
     <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
@@ -23,6 +18,8 @@
 
 
 
+
+    <meta name="keywords" content="SQL注入, Nlvi" />
 
 <link rel="stylesheet" href="/style/style.css">
 <script src="/script/jquery.min.js"></script>
@@ -207,10 +204,6 @@
         <main class="main" id="main">
             
     
-
-<section class="posts">
-    
-        
     <article class="post">
         <header class="post-header">
             <div class="post-time syuanpi riseIn-light back-1">
@@ -219,15 +212,22 @@
             </div>
             <h1 class="post-title syuanpi riseIn-light back-2">
             
-                <a href="/2017/11/03/SQL注入学习笔记／DVWA/">SQL注入学习笔记／DVWA</a>
+                SQL注入学习笔记／DVWA
             
             </h1>
+            
+                
+                    <div class="post-tags syuanpi riseIn-light back-3">
+                    
+                        <a href="/tags/SQL注入/">SQL注入</a>
+                    
+                    </div>
+                
             
         </header>
         <div class="post-content syuanpi riseIn-light back-3">
             
-                
-                    <h1 id="安全级别Low"><a href="#安全级别Low" class="headerlink" title="安全级别Low"></a>安全级别Low</h1><p>##0.服务端核心代码</p>
+                <h1 id="安全级别Low"><a href="#安全级别Low" class="headerlink" title="安全级别Low"></a>安全级别Low</h1><p>##0.服务端核心代码</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span> </div><div class="line"></div><div class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_REQUEST[ <span class="string">'Submit'</span> ] ) ) &#123; </div><div class="line">    <span class="comment">// Get input </span></div><div class="line">    $id = $_REQUEST[ <span class="string">'id'</span> ]; </div><div class="line"></div><div class="line">    <span class="comment">// Check database </span></div><div class="line">    $query  = <span class="string">"SELECT first_name, last_name FROM users WHERE user_id = '$id';"</span>; </div><div class="line">    $result = mysql_query( $query ) <span class="keyword">or</span> <span class="keyword">die</span>( <span class="string">'&lt;pre&gt;'</span> . mysql_error() . <span class="string">'&lt;/pre&gt;'</span> ); </div><div class="line"></div><div class="line">    <span class="comment">// Get results </span></div><div class="line">    $num = mysql_numrows( $result ); </div><div class="line">    $i   = <span class="number">0</span>; </div><div class="line">    <span class="keyword">while</span>( $i &lt; $num ) &#123; </div><div class="line">        <span class="comment">// Get values </span></div><div class="line">        $first = mysql_result( $result, $i, <span class="string">"first_name"</span> ); </div><div class="line">        $last  = mysql_result( $result, $i, <span class="string">"last_name"</span> ); </div><div class="line"></div><div class="line">        <span class="comment">// Feedback for end user </span></div><div class="line">        <span class="keyword">echo</span> <span class="string">"&lt;pre&gt;ID: &#123;$id&#125;&lt;br /&gt;First name: &#123;$first&#125;&lt;br /&gt;Surname: &#123;$last&#125;&lt;/pre&gt;"</span>; </div><div class="line"></div><div class="line">        <span class="comment">// Increase loop count </span></div><div class="line">        $i++; </div><div class="line">    &#125; </div><div class="line"></div><div class="line">    mysql_close(); </div><div class="line">&#125; </div><div class="line"></div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
 <h2 id="1-判断字符or数字"><a href="#1-判断字符or数字" class="headerlink" title="1. 判断字符or数字"></a>1. 判断字符or数字</h2><p><code>1’ or 1 = 1#</code></p>
 <h2 id="2-查询语句字段数"><a href="#2-查询语句字段数" class="headerlink" title="2. 查询语句字段数"></a>2. 查询语句字段数</h2><p><code>1&#39; or 1 = 1 order by #</code></p>
@@ -259,48 +259,29 @@
 <p>字符型注入\防止sqlmap</p>
 <h1 id="安全级别impossible"><a href="#安全级别impossible" class="headerlink" title="安全级别impossible"></a>安全级别impossible</h1><h2 id="0-服务端核心代码-2"><a href="#0-服务端核心代码-2" class="headerlink" title="0. 服务端核心代码"></a>0. 服务端核心代码</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">&lt;?php</span> </div><div class="line"></div><div class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_GET[ <span class="string">'Submit'</span> ] ) ) &#123; </div><div class="line">    <span class="comment">// Check Anti-CSRF token </span></div><div class="line">    checkToken( $_REQUEST[ <span class="string">'user_token'</span> ], $_SESSION[ <span class="string">'session_token'</span> ], <span class="string">'index.php'</span> ); </div><div class="line"></div><div class="line">    <span class="comment">// Get input </span></div><div class="line">    $id = $_GET[ <span class="string">'id'</span> ]; </div><div class="line"></div><div class="line">    <span class="comment">// Was a number entered? </span></div><div class="line">    <span class="keyword">if</span>(is_numeric( $id )) &#123; </div><div class="line">        <span class="comment">// Check the database </span></div><div class="line">        $data = $db-&gt;prepare( <span class="string">'SELECT first_name, last_name FROM users WHERE user_id = (:id) LIMIT 1;'</span> ); </div><div class="line">        $data-&gt;bindParam( <span class="string">':id'</span>, $id, PDO::PARAM_INT ); </div><div class="line">        $data-&gt;execute(); </div><div class="line">        $row = $data-&gt;fetch(); </div><div class="line"></div><div class="line">        <span class="comment">// Make sure only 1 result is returned </span></div><div class="line">        <span class="keyword">if</span>( $data-&gt;rowCount() == <span class="number">1</span> ) &#123; </div><div class="line">            <span class="comment">// Get values </span></div><div class="line">            $first = $row[ <span class="string">'first_name'</span> ]; </div><div class="line">            $last  = $row[ <span class="string">'last_name'</span> ]; </div><div class="line"></div><div class="line">            <span class="comment">// Feedback for end user </span></div><div class="line">            <span class="keyword">echo</span> <span class="string">"&lt;pre&gt;ID: &#123;$id&#125;&lt;br /&gt;First name: &#123;$first&#125;&lt;br /&gt;Surname: &#123;$last&#125;&lt;/pre&gt;"</span>; </div><div class="line">        &#125; </div><div class="line">    &#125; </div><div class="line">&#125; </div><div class="line"></div><div class="line"><span class="comment">// Generate Anti-CSRF token </span></div><div class="line">generateSessionToken(); </div><div class="line"></div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
 
-                
             
         
         </div>
         
-    </article>
-    
-
-    
-        
-    <article class="post">
-        <header class="post-header">
-            <div class="post-time syuanpi riseIn-light back-1">
-                <span>October 31, 2017</span>
-                
-            </div>
-            <h1 class="post-title syuanpi riseIn-light back-2">
             
-                <a href="/2017/10/31/Hello-World-0/">Hello World</a>
             
-            </h1>
-            
-        </header>
-        <div class="post-content syuanpi riseIn-light back-3">
-            
-                
-                    <p>是个开始吧</p>
-
-                
-            
-        
-        </div>
         
     </article>
     
-
-    
-</section>
-    
-    <nav class="pagination">
-        <span class="page-number current">1</span>
+        
+    <nav class="article-page">
+        
+        
+            <a href="/2017/10/31/Hello-World-0/" id="art-right" class="art-left">
+                <span class="prev-title"> 
+                    <i class="iconfont icon-left"></i>Hello World
+                </span>
+            </a>
+        
     </nav>
+
+        
+    
 
 
         </main>
@@ -368,6 +349,8 @@ $(document).ready(function(){
 })
 </script>
     </div>
+    
+        
     
     <div class="backtop syuanpi dead toTop" id="backtop">
     <i class="iconfont icon-up"></i>
