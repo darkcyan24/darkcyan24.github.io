@@ -51,6 +51,90 @@
 
     
     
+    <article id="post-计算机网络基础" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/12/09/计算机网络基础/"
+    >计算机网络基础</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/12/09/计算机网络基础/" class="article-date">
+  <time datetime="2019-12-09T13:49:04.000Z" itemprop="datePublished">2019-12-09</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <p>[TOC]</p>
+<h1 id="一、五层模型"><a href="#一、五层模型" class="headerlink" title="一、五层模型"></a>一、五层模型</h1><p>应用层、传输层、网络层、链接层、实体层</p>
+<h2 id="1、实体层"><a href="#1、实体层" class="headerlink" title="1、实体层"></a>1、实体层</h2><p>物理连接手段，传送01信号</p>
+<h2 id="2、链接层"><a href="#2、链接层" class="headerlink" title="2、链接层"></a>2、链接层</h2><p><strong>以太网（Ethernet）协议占据主导地位</strong></p>
+<p>帧：Frame = Head + Data</p>
+<p>Head : 18B</p>
+<p>Data : 46~1500B</p>
+<p>Head : 包含MAC地址（网卡的地址，48bit，12个16进制）</p>
+<p>同一子网内，通过广播和MAC地址传递信息</p>
+<h2 id="3-网络层"><a href="#3-网络层" class="headerlink" title="3. 网络层"></a>3. 网络层</h2><p>IP协议/IP地址</p>
+<p>IPv4 : 32bit 网络部分 + 主机部分</p>
+<p>子网掩码（subnet mask）：32bit 网络部分为1，主机部分为0</p>
+<p>IP数据包 ： 20~60B Head （总共65535B）</p>
+<h3 id="3-1-ARP协议"><a href="#3-1-ARP协议" class="headerlink" title="3.1 ARP协议"></a>3.1 ARP协议</h3><p>通过IP地址查找MAC地址</p>
+<ol>
+<li>子网内部：地址填：FF:FF:FF:FF:FF:FF（广播地址）</li>
+<li>不在同一子网：把数据包传送给两个子网连接的网关（gateway）</li>
+</ol>
+<h2 id="4-传输层"><a href="#4-传输层" class="headerlink" title="4. 传输层"></a>4. 传输层</h2><p>数据包供哪个程序使用——参数“端口”（port）（0～65535）16个二进制</p>
+<p>0～1023系统占用</p>
+<p>主机+端口 = 套接字（socket）</p>
+<h3 id="4-1-UDP"><a href="#4-1-UDP" class="headerlink" title="4.1 UDP"></a>4.1 UDP</h3><p>Head : 8B（总长65535B正好放进一个IP数据包）定义发出端口和接收端口</p>
+<h3 id="4-2-TCP"><a href="#4-2-TCP" class="headerlink" title="4.2 TCP"></a>4.2 TCP</h3><p>没有长度限制，能确认对方是否收到</p>
+<h2 id="5-应用层"><a href="#5-应用层" class="headerlink" title="5. 应用层"></a>5. 应用层</h2><p>规定应用程序的数据格式</p>
+
+      
+      <!-- 打赏 -->
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/12/09/计算机网络基础/" data-id="ck3z8hycs0000a22wwnxaxyu6"
+        class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算机网络基础/">计算机网络基础</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-DNS-攻击种类" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -371,12 +455,12 @@
   <ul class="nav">
     <li class="nav-item">
       
-      <a class="nav-item-link nav-item-search"  title="Buscar">
+      <a class="nav-item-link nav-item-search"  title="Suche">
         <i class="ri-search-line"></i>
       </a>
       
       
-      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS">
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
         <i class="ri-rss-line"></i>
       </a>
       
