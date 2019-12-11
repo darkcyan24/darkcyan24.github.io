@@ -6,7 +6,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    生成素数的方法 |  年糕火锅酒
+    数据包 |  年糕火锅酒
   </title>
   
   <link rel="shortcut icon" href="/favicon.ico" />
@@ -25,7 +25,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-生成素数的方法" class="article article-type-post" itemscope
+  <article id="post-数据包" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -33,7 +33,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  生成素数的方法
+  数据包
 </h1>
   
 
@@ -42,8 +42,8 @@
 
     
     <div class="article-meta">
-      <a href="/2019/05/17/生成素数的方法/" class="article-date">
-  <time datetime="2019-05-17T09:42:59.000Z" itemprop="datePublished">2019-05-17</time>
+      <a href="/2019/12/11/数据包/" class="article-date">
+  <time datetime="2019-12-11T03:39:23.000Z" itemprop="datePublished">2019-12-11</time>
 </a>
       
     </div>
@@ -64,15 +64,17 @@
       
 
       
-      <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">countPrimes</span><span class="params">(self, n: int)</span> -&gt; int:</span></div><div class="line">        <span class="keyword">if</span> n &lt; <span class="number">3</span>:</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>     </div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="comment"># 首先生成了一个全部为1的列表</span></div><div class="line">            output = [<span class="number">1</span>] * n</div><div class="line">            <span class="comment"># 因为0和1不是质数,所以列表的前两个位置赋值为0</span></div><div class="line">            output[<span class="number">0</span>],output[<span class="number">1</span>] = <span class="number">0</span>,<span class="number">0</span></div><div class="line">             <span class="comment"># 此时从index = 2开始遍历,output[2]==1,即表明第一个质数为2,然后将2的倍数对应的索引</span></div><div class="line">             <span class="comment"># 全部赋值为0. 此时output[3] == 1,即表明下一个质数为3,同样划去3的倍数.以此类推.</span></div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>,int(n**<span class="number">0.5</span>)+<span class="number">1</span>): </div><div class="line">                <span class="keyword">if</span> output[i] == <span class="number">1</span>:</div><div class="line">                    output[i*i:n:i] = [<span class="number">0</span>] * len(output[i*i:n:i])</div><div class="line">         <span class="comment"># 最后output中的数字1表明该位置上的索引数为质数,然后求和即可.</span></div><div class="line">        <span class="keyword">return</span> sum(output)</div></pre></td></tr></table></figure>
+      
       
       <!-- 打赏 -->
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/17/生成素数的方法/" data-id="ck411v7an0004rv2wcnun8dww"
+      <a data-url="http://yoursite.com/2019/12/11/数据包/" data-id="ck411v7al0003rv2wnr4wzuje"
         class="article-share-link">分享</a>
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算机网络基础/">计算机网络基础</a></li></ul>
+
     </footer>
 
   </div>
@@ -81,19 +83,10 @@
   
   <nav class="article-nav">
     
-      <a href="/2019/05/26/DNS-基础知识/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            DNS 基础知识
-          
-        </div>
-      </a>
     
-    
-      <a href="/2019/05/16/牛顿迭代法/" class="article-nav-link">
+      <a href="/2019/12/09/计算机网络基础/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">牛顿迭代法</div>
+        <div class="article-nav-title">计算机网络基础</div>
       </a>
     
   </nav>

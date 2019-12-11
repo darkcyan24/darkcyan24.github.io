@@ -51,6 +51,66 @@
 
     
     
+    <article id="post-数据包" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/12/11/数据包/"
+    >数据包</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/12/11/数据包/" class="article-date">
+  <time datetime="2019-12-11T03:39:23.000Z" itemprop="datePublished">2019-12-11</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      
+      
+      <!-- 打赏 -->
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/12/11/数据包/" data-id="ck411v7al0003rv2wnr4wzuje"
+        class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算机网络基础/">计算机网络基础</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-计算机网络基础" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -116,7 +176,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/09/计算机网络基础/" data-id="ck3z8okah0005bh2wsxnb3qzp"
+      <a data-url="http://yoursite.com/2019/12/09/计算机网络基础/" data-id="ck411v7b00007rv2wr0bypi5h"
         class="article-share-link">分享</a>
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算机网络基础/">计算机网络基础</a></li></ul>
@@ -176,9 +236,136 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/26/DNS-攻击种类/" data-id="ck3z8ok8e0000bh2wx0x2myk0"
+      <a data-url="http://yoursite.com/2019/05/26/DNS-攻击种类/" data-id="ck411v7a60000rv2wxh5gs7ug"
         class="article-share-link">分享</a>
       
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-DNS-基础知识" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/05/26/DNS-基础知识/"
+    >DNS 基础知识</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/05/26/DNS-基础知识/" class="article-date">
+  <time datetime="2019-05-26T05:35:15.000Z" itemprop="datePublished">2019-05-26</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h1 id="一、"><a href="#一、" class="headerlink" title="一、"></a>一、</h1><h2 id="1、域和区域的区别"><a href="#1、域和区域的区别" class="headerlink" title="1、域和区域的区别"></a>1、域和区域的区别</h2><p>域 - 全包括</p>
+<p>区域 - 排除已授权出去的子域</p>
+<p>名称服务器加载的是区域的数据</p>
+<h2 id="2、名称服务器类型"><a href="#2、名称服务器类型" class="headerlink" title="2、名称服务器类型"></a>2、名称服务器类型</h2><ul>
+<li>Primary master</li>
+<li>Secondary master(slave)</li>
+</ul>
+<p>当slave启动时，它会联系master名称服务器</p>
+<h2 id="3-记录信息"><a href="#3-记录信息" class="headerlink" title="3.记录信息"></a>3.记录信息</h2><ul>
+<li>A记录 记录IPv4地址，TTL默认600s</li>
+<li>AAAA记录 记录IPv4地址，默认600s</li>
+<li>CNAME记录 指向域名</li>
+<li>NS记录 记录授权DNS服务器域名，至少添加2组DNS服务，默认600s</li>
+</ul>
+<h1 id="二、DNS-server"><a href="#二、DNS-server" class="headerlink" title="二、DNS server"></a>二、DNS server</h1><ol>
+<li><p>Recursive resolvers</p>
+</li>
+<li><p>Root nameservers</p>
+<p>13个 由ICANN监督</p>
+</li>
+<li><p>TLD nameservers</p>
+<ol>
+<li><p>通用顶级域名</p>
+<ul>
+<li>com 商业组织</li>
+<li>edu 教育组织</li>
+<li>gov</li>
+<li>mil 军事组织</li>
+<li>net 提供网络基础设施/商业组织</li>
+<li>org 非营利性/商业组织</li>
+<li>int 国际组织</li>
+</ul>
+</li>
+<li><p>国家/地区代码顶级域</p>
+<p>uk,us,ru,jp</p>
+</li>
+</ol>
+</li>
+<li><p>Authoritative name servers</p>
+</li>
+</ol>
+<h1 id="三、DNS的三种查询方式"><a href="#三、DNS的三种查询方式" class="headerlink" title="三、DNS的三种查询方式"></a>三、DNS的三种查询方式</h1><ul>
+<li>递归查询</li>
+<li>迭代查询</li>
+<li>非递归查询</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/006tNbRwly1g9rgyy1hxmj30zk0hvtam.jpg" alt=""></p>
+<h2 id="1-递归查询（Recursive-query）"><a href="#1-递归查询（Recursive-query）" class="headerlink" title="1.递归查询（Recursive query）"></a>1.递归查询（Recursive query）</h2><p>Client –&gt; DNS Server</p>
+<h2 id="2-迭代查询（Iterative-query）"><a href="#2-迭代查询（Iterative-query）" class="headerlink" title="2. 迭代查询（Iterative query）"></a>2. 迭代查询（Iterative query）</h2><h2 id="3-非递归查询（Non-recursive-query）"><a href="#3-非递归查询（Non-recursive-query）" class="headerlink" title="3. 非递归查询（Non-recursive query）"></a>3. 非递归查询（Non-recursive query）</h2><p>Client –&gt; DNS Server</p>
+<ol>
+<li>浏览器DNS缓存</li>
+<li>操作系统DNS缓存</li>
+</ol>
+<p>DNS Server 已经知道答案，直接返回结果</p>
+<ul>
+<li>DNS Server 本机缓存了对应IP</li>
+<li>DNS Server 本机缓存了对应的域名的权威服务器</li>
+</ul>
+<h1 id="四、balalaxiaomoxian"><a href="#四、balalaxiaomoxian" class="headerlink" title="四、balalaxiaomoxian"></a>四、balalaxiaomoxian</h1><h2 id="1-DNS使用TCP"><a href="#1-DNS使用TCP" class="headerlink" title="1. DNS使用TCP"></a>1. DNS使用TCP</h2><ol>
+<li>返回响应超过512B（UDP为了避免IP分片的风险，报文尺寸往往小于最小的物理链路<strong>X.25</strong>的MTU = 576字节，所以512字节是一个安全的尺寸。）</li>
+<li>区域传送</li>
+</ol>
+<h2 id="2-区域传送"><a href="#2-区域传送" class="headerlink" title="2. 区域传送"></a>2. 区域传送</h2><p><code>区域传送</code>：区域传送是主域名服务器向辅助域名服务器传送变化的那部分数据，辅域名服务器会定时向主域名服务器进行查询，以便了解数据是否有变动。如有变动，会执行一次区域传送，进行数据同步。</p>
+<ol>
+<li>完全区域传送</li>
+<li>增量区域传送</li>
+</ol>
+
+      
+      <!-- 打赏 -->
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/26/DNS-基础知识/" data-id="ck411v7bs000arv2wiq3kpcnw"
+        class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DNS-计算机网络基础/">DNS,计算机网络基础</a></li></ul>
+
     </footer>
 
   </div>
@@ -234,7 +421,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/17/生成素数的方法/" data-id="ck3z8ok9l0003bh2wd6lm5dtr"
+      <a data-url="http://yoursite.com/2019/05/17/生成素数的方法/" data-id="ck411v7an0004rv2wcnun8dww"
         class="article-share-link">分享</a>
       
     </footer>
@@ -293,7 +480,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/16/牛顿迭代法/" data-id="ck3z8ok8r0002bh2wl859i2p3"
+      <a data-url="http://yoursite.com/2019/05/16/牛顿迭代法/" data-id="ck411v7aj0002rv2woei3s8cy"
         class="article-share-link">分享</a>
       
     </footer>
@@ -352,7 +539,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/31/Hello-World-0/" data-id="ck3z8ok8m0001bh2w4cde0znl"
+      <a data-url="http://yoursite.com/2017/10/31/Hello-World-0/" data-id="ck411v7ag0001rv2wlzqhnqzf"
         class="article-share-link">分享</a>
       
     </footer>
@@ -455,12 +642,12 @@
   <ul class="nav">
     <li class="nav-item">
       
-      <a class="nav-item-link nav-item-search"  title="Buscar">
+      <a class="nav-item-link nav-item-search"  title="Search">
         <i class="ri-search-line"></i>
       </a>
       
       
-      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS">
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
         <i class="ri-rss-line"></i>
       </a>
       

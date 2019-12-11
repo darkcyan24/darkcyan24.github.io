@@ -6,7 +6,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    生成素数的方法 |  年糕火锅酒
+    DNS 基础知识 |  年糕火锅酒
   </title>
   
   <link rel="shortcut icon" href="/favicon.ico" />
@@ -25,7 +25,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-生成素数的方法" class="article article-type-post" itemscope
+  <article id="post-DNS-基础知识" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -33,7 +33,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  生成素数的方法
+  DNS 基础知识
 </h1>
   
 
@@ -42,8 +42,8 @@
 
     
     <div class="article-meta">
-      <a href="/2019/05/17/生成素数的方法/" class="article-date">
-  <time datetime="2019-05-17T09:42:59.000Z" itemprop="datePublished">2019-05-17</time>
+      <a href="/2019/05/26/DNS-基础知识/" class="article-date">
+  <time datetime="2019-05-26T05:35:15.000Z" itemprop="datePublished">2019-05-26</time>
 </a>
       
     </div>
@@ -51,6 +51,8 @@
 
     
     
+    <div class="tocbot"></div>
+
 
 
 
@@ -64,15 +66,84 @@
       
 
       
-      <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">countPrimes</span><span class="params">(self, n: int)</span> -&gt; int:</span></div><div class="line">        <span class="keyword">if</span> n &lt; <span class="number">3</span>:</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>     </div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="comment"># 首先生成了一个全部为1的列表</span></div><div class="line">            output = [<span class="number">1</span>] * n</div><div class="line">            <span class="comment"># 因为0和1不是质数,所以列表的前两个位置赋值为0</span></div><div class="line">            output[<span class="number">0</span>],output[<span class="number">1</span>] = <span class="number">0</span>,<span class="number">0</span></div><div class="line">             <span class="comment"># 此时从index = 2开始遍历,output[2]==1,即表明第一个质数为2,然后将2的倍数对应的索引</span></div><div class="line">             <span class="comment"># 全部赋值为0. 此时output[3] == 1,即表明下一个质数为3,同样划去3的倍数.以此类推.</span></div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>,int(n**<span class="number">0.5</span>)+<span class="number">1</span>): </div><div class="line">                <span class="keyword">if</span> output[i] == <span class="number">1</span>:</div><div class="line">                    output[i*i:n:i] = [<span class="number">0</span>] * len(output[i*i:n:i])</div><div class="line">         <span class="comment"># 最后output中的数字1表明该位置上的索引数为质数,然后求和即可.</span></div><div class="line">        <span class="keyword">return</span> sum(output)</div></pre></td></tr></table></figure>
+      <h1 id="一、"><a href="#一、" class="headerlink" title="一、"></a>一、</h1><h2 id="1、域和区域的区别"><a href="#1、域和区域的区别" class="headerlink" title="1、域和区域的区别"></a>1、域和区域的区别</h2><p>域 - 全包括</p>
+<p>区域 - 排除已授权出去的子域</p>
+<p>名称服务器加载的是区域的数据</p>
+<h2 id="2、名称服务器类型"><a href="#2、名称服务器类型" class="headerlink" title="2、名称服务器类型"></a>2、名称服务器类型</h2><ul>
+<li>Primary master</li>
+<li>Secondary master(slave)</li>
+</ul>
+<p>当slave启动时，它会联系master名称服务器</p>
+<h2 id="3-记录信息"><a href="#3-记录信息" class="headerlink" title="3.记录信息"></a>3.记录信息</h2><ul>
+<li>A记录 记录IPv4地址，TTL默认600s</li>
+<li>AAAA记录 记录IPv4地址，默认600s</li>
+<li>CNAME记录 指向域名</li>
+<li>NS记录 记录授权DNS服务器域名，至少添加2组DNS服务，默认600s</li>
+</ul>
+<h1 id="二、DNS-server"><a href="#二、DNS-server" class="headerlink" title="二、DNS server"></a>二、DNS server</h1><ol>
+<li><p>Recursive resolvers</p>
+</li>
+<li><p>Root nameservers</p>
+<p>13个 由ICANN监督</p>
+</li>
+<li><p>TLD nameservers</p>
+<ol>
+<li><p>通用顶级域名</p>
+<ul>
+<li>com 商业组织</li>
+<li>edu 教育组织</li>
+<li>gov</li>
+<li>mil 军事组织</li>
+<li>net 提供网络基础设施/商业组织</li>
+<li>org 非营利性/商业组织</li>
+<li>int 国际组织</li>
+</ul>
+</li>
+<li><p>国家/地区代码顶级域</p>
+<p>uk,us,ru,jp</p>
+</li>
+</ol>
+</li>
+<li><p>Authoritative name servers</p>
+</li>
+</ol>
+<h1 id="三、DNS的三种查询方式"><a href="#三、DNS的三种查询方式" class="headerlink" title="三、DNS的三种查询方式"></a>三、DNS的三种查询方式</h1><ul>
+<li>递归查询</li>
+<li>迭代查询</li>
+<li>非递归查询</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/006tNbRwly1g9rgyy1hxmj30zk0hvtam.jpg" alt=""></p>
+<h2 id="1-递归查询（Recursive-query）"><a href="#1-递归查询（Recursive-query）" class="headerlink" title="1.递归查询（Recursive query）"></a>1.递归查询（Recursive query）</h2><p>Client –&gt; DNS Server</p>
+<h2 id="2-迭代查询（Iterative-query）"><a href="#2-迭代查询（Iterative-query）" class="headerlink" title="2. 迭代查询（Iterative query）"></a>2. 迭代查询（Iterative query）</h2><h2 id="3-非递归查询（Non-recursive-query）"><a href="#3-非递归查询（Non-recursive-query）" class="headerlink" title="3. 非递归查询（Non-recursive query）"></a>3. 非递归查询（Non-recursive query）</h2><p>Client –&gt; DNS Server</p>
+<ol>
+<li>浏览器DNS缓存</li>
+<li>操作系统DNS缓存</li>
+</ol>
+<p>DNS Server 已经知道答案，直接返回结果</p>
+<ul>
+<li>DNS Server 本机缓存了对应IP</li>
+<li>DNS Server 本机缓存了对应的域名的权威服务器</li>
+</ul>
+<h1 id="四、balalaxiaomoxian"><a href="#四、balalaxiaomoxian" class="headerlink" title="四、balalaxiaomoxian"></a>四、balalaxiaomoxian</h1><h2 id="1-DNS使用TCP"><a href="#1-DNS使用TCP" class="headerlink" title="1. DNS使用TCP"></a>1. DNS使用TCP</h2><ol>
+<li>返回响应超过512B（UDP为了避免IP分片的风险，报文尺寸往往小于最小的物理链路<strong>X.25</strong>的MTU = 576字节，所以512字节是一个安全的尺寸。）</li>
+<li>区域传送</li>
+</ol>
+<h2 id="2-区域传送"><a href="#2-区域传送" class="headerlink" title="2. 区域传送"></a>2. 区域传送</h2><p><code>区域传送</code>：区域传送是主域名服务器向辅助域名服务器传送变化的那部分数据，辅域名服务器会定时向主域名服务器进行查询，以便了解数据是否有变动。如有变动，会执行一次区域传送，进行数据同步。</p>
+<ol>
+<li>完全区域传送</li>
+<li>增量区域传送</li>
+</ol>
+
       
       <!-- 打赏 -->
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/17/生成素数的方法/" data-id="ck411v7an0004rv2wcnun8dww"
+      <a data-url="http://yoursite.com/2019/05/26/DNS-基础知识/" data-id="ck411v7bs000arv2wiq3kpcnw"
         class="article-share-link">分享</a>
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DNS-计算机网络基础/">DNS,计算机网络基础</a></li></ul>
+
     </footer>
 
   </div>
@@ -81,19 +152,19 @@
   
   <nav class="article-nav">
     
-      <a href="/2019/05/26/DNS-基础知识/" class="article-nav-link">
+      <a href="/2019/05/26/DNS-攻击种类/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            DNS 基础知识
+            DNS 攻击种类
           
         </div>
       </a>
     
     
-      <a href="/2019/05/16/牛顿迭代法/" class="article-nav-link">
+      <a href="/2019/05/17/生成素数的方法/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">牛顿迭代法</div>
+        <div class="article-nav-title">生成素数的方法</div>
       </a>
     
   </nav>
